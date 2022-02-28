@@ -37,6 +37,21 @@
         "templateStrings": true,
         "experimentalObjectRestSpread": true
     },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                "moduleDirectory": ["node_modules", "src/"]
+            }
+        }
+    },
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jest": true,
+        "es2021": true
+    },
     "rules": {
         "constructor-super": 2,
         "for-direction": 2,
@@ -181,12 +196,5 @@
         "spaced-comment": 2,
         "wrap-iife": 2,
         "react/prop-types": 0
-    },
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true,
-        "jest": true,
-        "es2021": true
     }
 }
