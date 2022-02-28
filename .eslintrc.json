@@ -16,6 +16,7 @@
     ],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
+        "requireConfigFile": false,
         "ecmaVersion": 11,
         "sourceType": "module",
         "ecmaFeatures": {
@@ -38,6 +39,9 @@
         "experimentalObjectRestSpread": true
     },
     "settings": {
+        "react": {
+            "version": "detect"
+        },
         "import/resolver": {
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"],

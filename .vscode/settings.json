@@ -5,7 +5,7 @@
         "source.fixAll": true,
     },
     "eslint.options": {
-        "configFile": ".eslintrc.json"
+        "overrideConfigFile": "F:\\studies\\sundaes-on-demand\\.eslintrc.json"
     },
     "eslint.validate": ["javascript", "javascriptreact"],
     "[javascript]": {
