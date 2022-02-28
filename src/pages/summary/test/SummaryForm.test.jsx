@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import SummaryForm from 'pages/summary/SummaryForm';
 
 describe('Should test behaviour of SummaryForm component', () => {
@@ -18,12 +19,43 @@ describe('Should test behaviour of SummaryForm component', () => {
 
         expect(confirmButton).toBeDisabled();
 
-        fireEvent.click(checkbox);
+        userEvent.click(checkbox);
         expect(confirmButton).toBeEnabled();
         expect(checkbox).toBeChecked();
 
-        fireEvent.click(checkbox);
+        userEvent.click(checkbox);
         expect(confirmButton).toBeDisabled();
         expect(checkbox).not.toBeChecked();
+    });
+});
+
+describe('Should test the popover behaviour inside SummaryForm', () => {
+    test('Popover should start hidden', () => {
+        render(<SummaryForm />);
+        const popover = screen.queryByText(/no ice cream will actually be deliveried./i);
+        expect(popover).not.toBeInTheDocument();
+    });
+
+    test('Popover should appears when user mouseover to target element', () => {
+        render(<SummaryForm />);
+        const testAndConditions = screen.getByText(/Terms and Conditions/i);
+        userEvent.hover(testAndConditions);
+
+        const popover = screen.queryByText(/no ice cream will actually be deliveried./i);
+        expect(popover).toBeInTheDocument();
+    });
+
+    test('Popover should disappear when user mouseout of target element', async () => {
+        render(<SummaryForm />);
+        const testAndConditions = screen.getByText(/Terms and Conditions/i);
+        userEvent.hover(testAndConditions);
+
+        const popover = screen.queryByText(/no ice cream will actually be deliveried./i);
+        expect(popover).toBeInTheDocument();
+
+        userEvent.unhover(testAndConditions);
+        await waitForElementToBeRemoved(() =>
+            screen.queryByText(/no ice cream will actually be deliveried./i)
+        );
     });
 });

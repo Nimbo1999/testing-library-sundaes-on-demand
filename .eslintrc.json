@@ -11,8 +11,8 @@
         "plugin:react-hooks/recommended",
         "plugin:react/jsx-runtime",
         "prettier",
-        "plugin:testing-library/react",
-        "plugin:jest-dom/recommended"
+        "plugin:jest-dom/recommended",
+        "plugin:testing-library/react"
     ],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
