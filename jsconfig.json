@@ -5,7 +5,9 @@
       "baseUrl": "src",
       "checkJs": true,
       "paths": {
-          "pages": ["./pages/*"]
+          "pages": ["./pages/*"],
+          "contexts": ["./contexts/*"],
+          "constants": ["./constants/*"]
       },
       "jsx": "react-jsx",
       "moduleResolution": "node"
