@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/row';
 
 import ScoopOption from 'pages/entry/ScoopOption';
 import ToopingOption from 'pages/entry/ToopingOption';
+import AlertBanner from 'pages/common/AlertBanner';
 
 /**
  * @param {{
@@ -14,17 +15,15 @@ import ToopingOption from 'pages/entry/ToopingOption';
  */
 export default function Options({ optionType }) {
     const [items, setItems] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const onLoadComplete = ({ data }) => setItems(data);
 
-        axios
-            .get(`http://localhost:3030/${optionType}`)
-            .then(onLoadComplete)
-            .catch(() => {
-                // TODO: handle response errors
-            });
+        axios.get(`http://localhost:3030/${optionType}`).then(onLoadComplete).catch(setError);
     }, [optionType]);
+
+    if (error) return <AlertBanner />;
 
     // TODO: replace `null` with ToppingOption when available
     const ItemComponent = optionType === 'scoops' ? ScoopOption : ToopingOption;
