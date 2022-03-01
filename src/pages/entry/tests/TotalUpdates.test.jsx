@@ -1,11 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { renderWithOrderDetailsProvider } from 'test-utils/testing-library-util';
+
 import Options from 'pages/entry/Options';
-import { OrderDetailsProvider } from 'contexts/OrderDetails';
 
 describe('Tests of subtota component', () => {
     test('Should change subtotal when interaction with an option', async () => {
-        render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
+        renderWithOrderDetailsProvider(<Options optionType="scoops" />);
 
         // Making sure that the total is 0.00
         const scoopsTotal = screen.getByText('Scoops total: $', { exact: false });

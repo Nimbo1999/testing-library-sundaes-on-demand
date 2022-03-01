@@ -1,11 +1,12 @@
 // @ts-nocheck
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+
+import { renderWithOrderDetailsProvider } from 'test-utils/testing-library-util';
 
 import Options from 'pages/entry/Options';
-import { OrderDetailsProvider } from 'contexts/OrderDetails';
 
 test('Display image for each scoop option from server', async () => {
-    render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
+    renderWithOrderDetailsProvider(<Options optionType="scoops" />);
 
     // Find images.
     const scoopImages = await screen.findAllByRole('img', { name: /scoop$/i });
@@ -17,7 +18,7 @@ test('Display image for each scoop option from server', async () => {
 });
 
 test('Display image for each topping option from server', async () => {
-    render(<Options optionType="toppings" />, { wrapper: OrderDetailsProvider });
+    renderWithOrderDetailsProvider(<Options optionType="toppings" />);
 
     // Find images.
     const toppingImages = await screen.findAllByRole('img', { name: /topping$/i });

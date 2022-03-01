@@ -1,9 +1,9 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import { renderWithOrderDetailsProvider } from 'test-utils/testing-library-util';
 import { rest } from 'msw';
 import { server } from '../../../mocks/server';
 
 import OrderEntry from 'pages/entry/OrderEntry';
-import { OrderDetailsProvider } from 'contexts/OrderDetails';
 
 describe('Testing error handlers for ScoopOptions and ToopingOptions', () => {
     server.resetHandlers(
@@ -12,7 +12,7 @@ describe('Testing error handlers for ScoopOptions and ToopingOptions', () => {
     );
 
     test('Expect to display alerts when occours an error with server api', async () => {
-        render(<OrderEntry />, { wrapper: OrderDetailsProvider });
+        renderWithOrderDetailsProvider(<OrderEntry />);
 
         await waitFor(async () => {
             const alerts = await screen.findAllByRole('alert');

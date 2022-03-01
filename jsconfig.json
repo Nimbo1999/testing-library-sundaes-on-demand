@@ -7,7 +7,8 @@
       "paths": {
           "pages": ["./pages/*"],
           "contexts": ["./contexts/*"],
-          "constants": ["./constants/*"]
+          "constants": ["./constants/*"],
+          "test-utils": ["./test-utils/*"]
       },
       "jsx": "react-jsx",
       "moduleResolution": "node"
