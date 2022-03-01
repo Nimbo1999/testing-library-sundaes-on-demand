@@ -4,6 +4,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/row';
 
 import ScoopOption from 'pages/entry/ScoopOption';
+import ToopingOption from 'pages/entry/ToopingOption';
 
 /**
  * @param {{
@@ -26,7 +27,7 @@ export default function Options({ optionType }) {
     }, [optionType]);
 
     // TODO: replace `null` with ToppingOption when available
-    const ItemComponent = optionType === 'scoops' ? ScoopOption : null;
+    const ItemComponent = optionType === 'scoops' ? ScoopOption : ToopingOption;
 
     const optionItems = items.map(item => (
         <ItemComponent key={item.name} name={item.name} imagePath={item.imagePath} />
