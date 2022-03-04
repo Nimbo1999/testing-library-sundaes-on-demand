@@ -25,4 +25,28 @@ describe('Tests of subtota component', () => {
         userEvent.type(chocolateInput, '2');
         expect(scoopsTotal).toHaveTextContent('6.00');
     });
+
+    test('Should change subtotal when interaction with an option', async () => {
+        renderWithOrderDetailsProvider(<Options optionType="toppings" />);
+
+        // Making sure that the total is 0.00
+        // Note that `exact: false` it is used here to tell that the string could be not exact
+        const toppingsTotal = screen.getByText('Toppings total: $', { exact: false });
+        expect(toppingsTotal).toHaveTextContent('0.00');
+
+        // update Cherries toppings to 1 and check the subtotal
+        const vanillaInput = await screen.findByRole('checkbox', { name: 'Cherries' });
+        userEvent.click(vanillaInput);
+        expect(toppingsTotal).toHaveTextContent('1.50');
+
+        // update M&Ms toppings to 1 and check the subtotal
+        const mAndMsInput = await screen.findByRole('checkbox', { name: 'M&Ms' });
+        userEvent.click(mAndMsInput);
+        expect(toppingsTotal).toHaveTextContent('3.00');
+
+        // update Hot fudge toppings to 1 and check the subtotal
+        const hotFudge = await screen.findByRole('checkbox', { name: 'Hot fudge' });
+        userEvent.click(hotFudge);
+        expect(toppingsTotal).toHaveTextContent('4.50');
+    });
 });
