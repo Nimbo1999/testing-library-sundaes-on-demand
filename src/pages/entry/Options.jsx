@@ -4,7 +4,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/row';
 
 import ScoopOption from 'pages/entry/ScoopOption';
-import ToopingOption from 'pages/entry/ToopingOption';
+import ToppingOption from 'pages/entry/ToppingOption';
 import AlertBanner from 'pages/common/AlertBanner';
 
 // @ts-ignore
@@ -34,7 +34,7 @@ export default function Options({ optionType }) {
     if (error) return <AlertBanner />;
 
     // TODO: replace `null` with ToppingOption when available
-    const ItemComponent = optionType === 'scoops' ? ScoopOption : ToopingOption;
+    const ItemComponent = optionType === 'scoops' ? ScoopOption : ToppingOption;
 
     const [firstLetter] = optionType;
     const title = firstLetter.toUpperCase() + optionType.slice(1).toLowerCase();
