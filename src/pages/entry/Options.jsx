@@ -7,6 +7,8 @@ import ScoopOption from 'pages/entry/ScoopOption';
 import ToppingOption from 'pages/entry/ToppingOption';
 import AlertBanner from 'pages/common/AlertBanner';
 
+import Utils from 'utils/index';
+
 // @ts-ignore
 import { pricePerItem } from 'constants/index';
 
@@ -53,7 +55,7 @@ export default function Options({ optionType }) {
     return (
         <>
             <h2>{title}</h2>
-            <p>{pricePerItem[optionType]} each</p>
+            <p>{Utils.formatCurrency(pricePerItem[optionType])} each</p>
             <p>
                 {title} total: {orderDetails.totals[optionType]}
             </p>

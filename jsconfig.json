@@ -8,7 +8,8 @@
           "pages": ["./pages/*"],
           "contexts": ["./contexts/*"],
           "constants": ["./constants/*"],
-          "test-utils": ["./test-utils/*"]
+          "test-utils": ["./test-utils/*"],
+          "utils": ["./utils/*"],
       },
       "jsx": "react-jsx",
       "moduleResolution": "node"
